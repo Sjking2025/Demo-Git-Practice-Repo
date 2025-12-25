@@ -1,23 +1,33 @@
-// Select the display element from the DOM [10]
 const display = document.getElementById("display");
 
-// Appends the character of the pressed button to the display [10]
 function appendToDisplay(input) {
-    display.value += input;
+    if (/^[0-9+\-*/.() ]$/.test(input)) {
+        display.value += input;
+    }
 }
 
-// Resets the display to an empty string [13]
 function clearDisplay() {
     display.value = "";
 }
 
-// Evaluates the mathematical expression [13]
+function backspace() {
+    display.value = display.value.slice(0, -1);
+}
+
 function calculate() {
     try {
-        // eval() takes the string (e.g., "1+2") and returns the result [13]
-        display.value = eval(display.value);
-    } catch (error) {
-        // If the expression is invalid (e.g., "7++"), show Error [14]
+        const expr = display.value.replace(/\s/g, '');
+        if (!/^[0-9+\-*/.()]+$/.test(expr)) throw new Error('Invalid');
+        display.value = Function('"use strict"; return (' + expr + ')')();
+    } catch {
         display.value = "Error";
     }
 }
+
+// Keyboard support
+document.addEventListener('keydown', (e) => {
+    if (/[0-9+\-*/.]/.test(e.key)) appendToDisplay(e.key);
+    if (e.key === 'Enter' || e.key === '=') calculate();
+    if (e.key === 'Escape') clearDisplay();
+    if (e.key === 'Backspace') backspace();
+});
