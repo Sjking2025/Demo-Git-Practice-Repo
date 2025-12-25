@@ -1,61 +1,64 @@
 body {
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: hsl(0, 0%, 95%);
+margin: 0;
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+background-color: hsl(0, 0%, 95%); /* Light background */
 }
 
 #calculator {
-    font-family: Arial, sans-serif;
-    background-color: hsl(0, 0%, 15%);
-    border-radius: 15px;
-    max-width: 500px;
-    overflow: hidden;
-    padding: 20px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+font-family: Arial, sans-serif;
+background-color: hsl(0, 0%, 15%); /* Dark calculator body */
+border-radius: 15px;
+max-width: 500px;
+overflow: hidden; /* Prevents long equations from breaking the layout */
 }
 
 #display {
-    width: 100%;
-    padding: 20px;
-    font-size: clamp(2rem, 8vw, 4rem);
-    text-align: right;
-    border: none;
-    background-color: hsl(0, 0%, 20%);
-    color: hsl(0, 0%, 90%);
-    box-sizing: border-box;
+width: 100%;
+padding: 20px;
+font-size: 5rem;
+text-align: left;
+border: none;
+background-color: hsl(0, 0%, 20%);
+color: white; /* Ensure text is visible on dark background */
 }
 
 #keys {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-    gap: 15px;
-    padding: 20px 0 0;
+display: grid;
+grid-template-columns: repeat(4, 1fr); /* Four even columns */
+gap: 10px;
+padding: 25px;
 }
 
 button {
-    border: none;
-    background-color: hsl(0, 0%, 30%);
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 50%;
-    aspect-ratio: 1;
-    font-size: clamp(1.2rem, 6vw, 2rem);
-    transition: all 0.1s;
+width: 100px;
+height: 100px;
+border-radius: 50px; /* Makes buttons circular */
+border: none;
+background-color: hsl(0, 0%, 30%);
+color: white;
+font-size: 3rem;
+font-weight: bold;
+cursor: pointer;
 }
 
-button:hover { background-color: hsl(0, 0%, 40%); }
-button:active { 
-    background-color: hsl(0, 0%, 50%); 
-    transform: scale(0.95); 
+/* Hover and Active states for standard buttons */
+button:hover {
+background-color: hsl(0, 0%, 40%);
+}
+button:active {
+background-color: hsl(0, 0%, 50%);
 }
 
+/* Operator-specific styling (Orange) */
 .operator-btn {
-    background-color: hsl(35, 100%, 55%);
+background-color: hsl(35, 100%, 55%);
 }
-.operator-btn:hover { background-color: hsl(35, 100%, 65%); }
-.operator-btn:active { background-color: hsl(35, 100%, 75%); }
+.operator-btn:hover {
+background-color: hsl(35, 100%, 65%);
+}
+.operator-btn:active {
+background-color: hsl(35, 100%, 75%);
+}
